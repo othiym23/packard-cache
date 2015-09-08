@@ -1,0 +1,46 @@
+{
+  "name": "@packard/cache",
+  "version": "1.0.0",
+  "description": "incrementally cache audio file metadata",
+  "main": "lib/index.js",
+  "scripts": {
+    "prepublish": "npm run transpile",
+    "standard": "standard",
+    "test": "standard && npm run transpile && tap test/*.js --coverage",
+    "transpile": "babel src -d lib"
+  },
+  "standard": {
+    "ignore": [
+      "lib/**"
+    ]
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/othiym23/packard-cache.git"
+  },
+  "keywords": [
+    "packard",
+    "flac",
+    "mp3",
+    "metadata",
+    "audio"
+  ],
+  "author": "Forrest L Norvell <ogd@aoaioxxysz.net>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/othiym23/packard-cache/issues"
+  },
+  "homepage": "https://github.com/othiym23/packard-cache#readme",
+  "dependencies": {
+    "@nothingness/level": "0.0.1",
+    "@packard/model": "^2.0.1",
+    "bluebird": "^2.9.34",
+    "nothingness": "0.0.3"
+  },
+  "devDependencies": {
+    "mkdirp": "^0.5.1",
+    "rimraf": "^2.4.3",
+    "standard": "^5.2.1",
+    "tap": "^1.4.0"
+  }
+}
