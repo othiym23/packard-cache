@@ -34,7 +34,10 @@
   "dependencies": {
     "@nothingness/level": "0.0.3",
     "@packard/model": "^3.0.1",
+    "babel-polyfill": "^6.9.0",
     "bluebird": "^3.4.0",
+    "farmhash": "^1.1.1",
+    "minimatch": "^3.0.0",
     "nothingness": "0.0.4"
   },
   "devDependencies": {
