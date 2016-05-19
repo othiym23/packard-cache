@@ -12,7 +12,7 @@ export default class TrackDAO extends DAO {
     const level = new Adaptor(levelPath)
     super(level)
 
-    this._get = Bluebird.promisify(level.db.get, level.db)
+    this._get = Bluebird.promisify(level.db.get, { context: level.db })
   }
 
   findByID (path, cb) {
