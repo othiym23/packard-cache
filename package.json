@@ -38,7 +38,9 @@
     "bluebird": "^3.4.0",
     "farmhash": "^1.1.1",
     "minimatch": "^3.0.0",
-    "nothingness": "0.0.4"
+    "nothingness": "0.0.4",
+    "npmlog": "^2.0.4",
+    "which": "^1.2.9"
   },
   "devDependencies": {
     "babel-preset-es2015": "^6.9.0",
