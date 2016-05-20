@@ -30,6 +30,6 @@ export default class TrackDAO extends DAO {
 
   // gonna use the whole buffalo
   static [GENSYM] (path) {
-    return 'track:' + path
+    return `track:${path}`
   }
 }

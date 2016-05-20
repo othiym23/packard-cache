@@ -62,15 +62,15 @@ export default class TagDAO extends DAO {
    * may have one or more values, or there may be more than one tag frame
    * of the same type in a given file. Therefore, to define a natural key
    * that satisfies the requirements of third (and higher) normal form(s),
-   * the key must be a natural key, and must encompass all of:
+   * the key must be composite, and must encompass all of:
    *
    * - the file ID (determined by the file's path)
    * - the metadata tag (frame) ID (determined by the file's name)
    * - the metadata value (determined by itself)
    *
    * One of the goals of this project is to avoid using surrogate keys whenever
-   * possible, so the key generator must in some way be a true natural
-   * composite key. The file path and the tag value can both be quite long.
+   * possible, so the key generator must in some way produce true natural,
+   * composite keys. The file path and the tag value can both be quite long.
    * Although leveldb imposes no constraints on key length, there's no reason
    * to include the entirety of long values in the key. Instead, use a fast
    * hash on them both and save the unhashed values as attributes in the
@@ -107,9 +107,6 @@ export default class TagDAO extends DAO {
    * outside the database.
    */
   static [GENSYM] (path, type, value) {
-    return 'tag:' +
-      fingerprint64(path) + ':' +
-      type + ':' +
-      fingerprint64(JSON.stringify(value))
+    return `tag:${fingerprint64(path)}:${type}:${fingerprint64(JSON.stringify(value))}`
   }
 }
