@@ -125,7 +125,7 @@ test('can round trip a full track via the DAO', function (t) {
 
     dao.findByID(track.file.path, function (er, saved) {
       t.ifError(er, 'track reconstituted')
-      t.same(track, saved)
+      t.same(saved, track)
 
       t.end()
     })
