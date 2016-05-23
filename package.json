@@ -32,14 +32,14 @@
   },
   "homepage": "https://github.com/othiym23/packard-cache#readme",
   "dependencies": {
-    "@nothingness/level": "0.0.4",
+    "@nothingness/level": "^0.1.1",
     "@packard/model": "^3.0.1",
     "babel-polyfill": "^6.9.0",
     "bluebird": "^3.4.0",
     "farmhash": "^1.1.1",
-    "lodash": "^4.12.0",
+    "lodash": "^4.13.0",
     "minimatch": "^3.0.0",
-    "nothingness": "0.0.5",
+    "nothingness": "^0.1.1",
     "npmlog": "^2.0.4",
     "which": "^1.2.9"
   },

@@ -28,10 +28,13 @@ export default class FileDAO extends DAO {
   _serialize (toSave, cb) {
     assert(toSave, 'must have File to serialize')
 
+    // use date.toString() vs date.toJSON() to ensure time zone is preserved
     let serialized = cloneDeepWith(
       toSave,
       v => isDate(v) ? v.toString() : v
     )
+    // required by the _serialize contract
+    serialized[DAO.idSymbol] = toSave[DAO.idSymbol] ? toSave[DAO.idSymbol] : this.generateID(serialized)
 
     return Bluebird.resolve(serialized).nodeify(cb)
   }
@@ -44,6 +47,8 @@ export default class FileDAO extends DAO {
     }
 
     const file = new File(loaded.path, loaded.stats, loaded.ext)
+    // required by the _deserialize contract
+    file[DAO.idSymbol] = loaded[DAO.isSymbol]
     return Bluebird.resolve(file).nodeify(cb)
   }
 
