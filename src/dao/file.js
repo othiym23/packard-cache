@@ -1,8 +1,7 @@
 import assert from 'assert'
-import { isDate } from 'util'
 
 import Bluebird from 'bluebird'
-import { cloneDeepWith } from 'lodash'
+import { cloneDeepWith, isDate } from 'lodash'
 
 import Adaptor from '@nothingness/level'
 import DAO from 'nothingness'
