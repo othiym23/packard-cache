@@ -34,7 +34,7 @@
   "dependencies": {
     "@nothingness/level": "^0.1.1",
     "@packard/model": "^3.0.1",
-    "babel-polyfill": "^6.9.0",
+    "babel-polyfill": "^6.22.0",
     "bluebird": "^3.4.0",
     "farmhash": "^1.1.1",
     "lodash": "^4.13.0",
