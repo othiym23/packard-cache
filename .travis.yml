@@ -11,15 +11,15 @@ dist: trusty
 sudo: required
 compiler: clang-3.6
 env:
-- CXX=g++-4.8
+  - CXX=g++-4.8
 addons:
   apt:
     sources:
     # - ubuntu-toolchain-r-test
-    - sourceline: "jonathonf/ffmpeg-3"
+      - sourceline: "ppa:jonathonf/ffmpeg-3"
     packages:
-    - g++-4.8
-    - ffmpeg
+      - g++-4.8
+      - ffmpeg
 notifications:
   slack:
     secure: XAEjwL0z+Wp0CRiHqJhovCvIhe2rFePUJlSOtqKKsmN1tqLq5bw3uNwgbp0wuQA0313WpHhZCkv8Pic6VJMA9hmxGd2KnYbVGxTgAdl6px4mab9sMC8mTmHvG0qQ2g4YpqkLUY8F2yUjHjd9rR1qgFX8jxB8GKYXDX2/Ps6qYio=
