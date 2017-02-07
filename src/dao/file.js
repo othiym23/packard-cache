@@ -32,10 +32,8 @@ export default class FileDAO extends DAO {
       toSave,
       v => isDate(v) ? v.toString() : v
     )
-    // required by the _serialize contract
-    serialized[DAO.idSymbol] = toSave[DAO.idSymbol] ? toSave[DAO.idSymbol] : this.generateID(serialized)
 
-    return Bluebird.resolve(serialized).nodeify(cb)
+    return super._serialize(serialized, cb)
   }
 
   _deserialize (loaded, cb) {
@@ -47,8 +45,9 @@ export default class FileDAO extends DAO {
 
     const file = new File(loaded.path, loaded.stats, loaded.ext)
     // required by the _deserialize contract
-    file[DAO.idSymbol] = loaded[DAO.isSymbol]
-    return Bluebird.resolve(file).nodeify(cb)
+    this.generateID(file)
+
+    return super._deserialize(file, cb)
   }
 
   generateID (file) {
