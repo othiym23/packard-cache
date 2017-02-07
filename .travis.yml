@@ -15,7 +15,7 @@ addons:
   apt:
     sources:
     - ubuntu-toolchain-r-test
-    - sourceline: "ppa:jonathonf/ffmpeg-3"
+    - sourceline: "ppa:pavlyshko/precise"
     packages:
     - g++-4.8
     - ffmpeg
