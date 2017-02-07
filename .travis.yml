@@ -1,9 +1,22 @@
 language: node_js
 sudo: false
 node_js:
-  - "4"
+  # prioritize latest LTS
   - "6"
-  - "0.10"
-  - "0.12"
+  - "4"
+  - "7"
 before_install:
   - npm install -g npm@latest
+sudo: false
+compiler: clang-3.6
+env:
+- CXX=g++-4.8
+addons:
+  apt:
+    sources:
+    - ubuntu-toolchain-r-test
+    packages:
+    - g++-4.8
+notifications:
+  slack:
+    secure: XAEjwL0z+Wp0CRiHqJhovCvIhe2rFePUJlSOtqKKsmN1tqLq5bw3uNwgbp0wuQA0313WpHhZCkv8Pic6VJMA9hmxGd2KnYbVGxTgAdl6px4mab9sMC8mTmHvG0qQ2g4YpqkLUY8F2yUjHjd9rR1qgFX8jxB8GKYXDX2/Ps6qYio=
