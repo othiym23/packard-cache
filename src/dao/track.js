@@ -3,7 +3,6 @@ import assert from 'assert'
 import Bluebird from 'bluebird'
 import { cloneDeep } from 'lodash'
 
-import Adaptor from '@nothingness/level'
 import DAO from 'nothingness'
 
 import FileDAO from './file.js'
@@ -19,7 +18,19 @@ export default class TrackDAO extends DAO {
   }
 
   findByID (path, cb) {
-    return this._get(TrackDAO[GENSYM](path)).nodeify(cb)
+    const file = this._fileDAO.findByID(path)
+
+    const track = file.then((f) => {
+      const loaded = this._get(TrackDAO[GENSYM](path))
+      return loaded.then((l) => {
+        l.file = f
+        return l
+      })
+    })
+
+    return track
+      .then((t) => this._deserialize(t))
+      .nodeify(cb)
   }
 
   _serialize (toSave, cb) {
@@ -34,12 +45,8 @@ export default class TrackDAO extends DAO {
   }
 
   _deserialize (loaded, cb) {
-    return this
-      ._fileDAO.findByID(loaded.path)
-      .then((file) => {
-        loaded.file = file
-        return super._deserialize(loaded, cb)
-      })
+    loaded[DAO.idSymbol] = this.generateID(loaded)
+    return super._deserialize(loaded, cb)
   }
 
   generateID (track) {
