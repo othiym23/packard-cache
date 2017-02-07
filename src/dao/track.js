@@ -27,6 +27,7 @@ export default class TrackDAO extends DAO {
 
     let serialized = cloneDeep(toSave)
     delete serialized.file
+    serialized[DAO.idSymbol] = this.generateID(toSave)
 
     return this._fileDAO.save(toSave.file)
                         .then(() => super._serialize(serialized, cb))

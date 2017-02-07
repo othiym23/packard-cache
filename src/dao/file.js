@@ -43,7 +43,7 @@ export default class FileDAO extends DAO {
 
     const file = new AudioFile(loaded.path, loaded.stats, loaded.streamData)
     // required by the _deserialize contract
-    this.generateID(file)
+    file[DAO.idSymbol] = this.generateID(file)
 
     return super._deserialize(file, cb)
   }
