@@ -4,7 +4,7 @@ import Bluebird from 'bluebird'
 import { cloneDeepWith, isDate } from 'lodash'
 
 import DAO from 'nothingness'
-import { File } from '@packard/model'
+import { AudioFile } from '@packard/model'
 
 const GENSYM = Symbol()
 const dates = [ 'atime', 'mtime', 'ctime', 'birthtime' ]
@@ -41,7 +41,7 @@ export default class FileDAO extends DAO {
       }
     }
 
-    const file = new File(loaded.path, loaded.stats, loaded.ext)
+    const file = new AudioFile(loaded.path, loaded.stats, loaded.streamData)
     // required by the _deserialize contract
     this.generateID(file)
 

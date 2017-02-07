@@ -12,7 +12,7 @@ var rimraf = Bluebird.promisify(rimrafAsync)
 
 var model = require('@packard/model')
 var Adaptor = require('@nothingness/level').default
-var File = model.File
+var AudioFile = model.AudioFile
 
 var FileDAO = require('../').FileDAO
 
@@ -33,7 +33,7 @@ test('can serialize the output of stat', function (t) {
     .then(function () { return stat(testFilePath) })
 
   var compared = statted.then(function (stats) {
-    var testFile = new File(testFilePath, stats)
+    var testFile = new AudioFile(testFilePath, stats)
     return dao.save(testFile)
       .then(function () { return dao.findByID(testFilePath) })
       .then(function (found) { t.same(found, testFile) })
@@ -64,7 +64,7 @@ test('can round trip basic file metadata via the DAO', function (t) {
     ctime: new Date('Mon Jul 27 2015 23:15:18 GMT-0700 (PDT)'),
     birthtime: new Date('Mon Jul 27 2015 18:08:35 GMT-0700 (PDT)')
   }
-  var lostFile = new File(lostPath, stats)
+  var lostFile = new AudioFile(lostPath, stats)
 
   var saved = dao.save(lostFile)
     .then(function () { return dao.findByID(lostPath) })

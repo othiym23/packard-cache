@@ -66,7 +66,7 @@ test('can round trip a full track via the DAO', function (t) {
     bytesToFirstFrame: 101641
   }
 
-  var file = new AudioFile(lostPath, stats, { streamData: streamData })
+  var file = new AudioFile(lostPath, stats, streamData)
 
   var flacTags = {
     ACOUSTID_ID: 'a72e260e-a55d-4fdf-b16b-a27922eb2907',
