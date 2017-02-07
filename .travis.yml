@@ -16,6 +16,7 @@ addons:
   apt:
     sources:
     # - ubuntu-toolchain-r-test
+    - sourceline: "jonathonf/ffmpeg-3"
     packages:
     - g++-4.8
     - ffmpeg
