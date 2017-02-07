@@ -1,25 +1,23 @@
 language: node_js
-sudo: false
+sudo: required
 node_js:
-  # prioritize latest LTS
-  - "6"
-  - "4"
-  - "7"
+- '6'
+- '4'
+- '7'
 before_install:
-  - npm install -g npm@latest
+- npm install -g npm@latest
 dist: trusty
 sudo: required
 compiler: clang-3.6
 env:
-  - CXX=g++-4.8
+- CXX=g++-4.8
 addons:
   apt:
     sources:
-    # - ubuntu-toolchain-r-test
-      - sourceline: "ppa:jonathonf/ffmpeg-3"
+    - sourceline: ppa:jonathonf/ffmpeg-3
     packages:
-      - g++-4.8
-      - ffmpeg
+    - g++-4.8
+    - ffmpeg
 notifications:
   slack:
-    secure: XAEjwL0z+Wp0CRiHqJhovCvIhe2rFePUJlSOtqKKsmN1tqLq5bw3uNwgbp0wuQA0313WpHhZCkv8Pic6VJMA9hmxGd2KnYbVGxTgAdl6px4mab9sMC8mTmHvG0qQ2g4YpqkLUY8F2yUjHjd9rR1qgFX8jxB8GKYXDX2/Ps6qYio=
+    secure: mB0RXsDzA3wsim/v9/4PhHyn8IjqCDyk+Nmj7IMhJOQ4vLat8cFdCkJiM06nJF5hES2WdQXPsi9a7oAsTQhzevNAb3+QrNRxSHbj4OIpdDP1B5z48htW4NHeB1JGPZkxP7YNRT4pItT8TcKFhO5bQH0GsPGfS350/blIB3IpCwfm6j7yi6nZ7Nvje11gDGC0nh8yT0xLM8sVMMHlMVJqL7IEHvzcA2DfRaaN5piG6g+e+XDLWB/9A4oMxDGsj4DN+yIWfXPAHIGMFwVAu4uUVre7CLYDxgV50EbOw+yXm2aFPBKTvpTB5zOefaPCTnuSkHOZOhyU1oSByrvjmJMzfx5gYS6t3jh+7cHRwQQaMLpgjdCNfsl5TCKbK9jORmITpg2D+5cJK0YC2icT69JKDmJbl/IQplwVbFtOtGbJczLTtd/6oDjU091UFYFcYH90wWbbC9BtHJF+3QMdaykqEWtszJLb1xNGy/duC+akx2VWikSkRCayiYWJ4NYIPQ89/RZWPKlVT63umTDE4HXAx/kCREVJ3ey/oJ4TtT7yu8TUag7DKUVUB0i5EGPwd9KpFINlaaTYZoMGpuDk1uaxniNUGGc118vMjOZTmqDzv0FoggSMH+14ZBuEMfrKuJK1cdy1DxtazzvFzGML6KNgWIBOqtEAqoXdWdf8fNE/q+o=
