@@ -7,6 +7,8 @@ var rimraf = require('rimraf')
 var test = require('tap').test
 var Bluebird = require('bluebird')
 
+var Adaptor = require('@nothingness/level').default
+
 var TagDAO = require('../').TagDAO
 
 var PLAYGROUND = join(__dirname, 'tag-test-db')
@@ -17,7 +19,7 @@ test('setup', function (t) {
 })
 
 test('can round trip tags via the DAO', function (t) {
-  var dao = new TagDAO(PLAYGROUND)
+  var dao = new TagDAO(new Adaptor(PLAYGROUND))
   var lostPath = '/Volumes/S8 food/latest-flac-2/Falling Skies/Land of the Lost  Tremor/01 Land of the Lost.flac'
 
   var flacTags = {

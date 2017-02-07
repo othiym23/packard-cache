@@ -3,7 +3,6 @@ import assert from 'assert'
 import Bluebird from 'bluebird'
 import { cloneDeepWith, isDate } from 'lodash'
 
-import Adaptor from '@nothingness/level'
 import DAO from 'nothingness'
 import { File } from '@packard/model'
 
@@ -11,8 +10,7 @@ const GENSYM = Symbol()
 const dates = [ 'atime', 'mtime', 'ctime', 'birthtime' ]
 
 export default class FileDAO extends DAO {
-  constructor (levelPath) {
-    const level = new Adaptor(levelPath)
+  constructor (level) {
     super(level)
 
     this._get = Bluebird.promisify(level.db.get, { context: level.db })

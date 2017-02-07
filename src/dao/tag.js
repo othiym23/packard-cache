@@ -6,14 +6,12 @@ import minimatch from 'minimatch'
 import Bluebird from 'bluebird'
 import { fingerprint64 } from 'farmhash'
 
-import Adaptor from '@nothingness/level'
 import DAO from 'nothingness'
 
 const GENSYM = Symbol()
 
 export default class TagDAO extends DAO {
-  constructor (levelPath) {
-    const level = new Adaptor(levelPath)
+  constructor (level) {
     super(level)
 
     this._scan = level.db.createReadStream.bind(level.db)

@@ -6,6 +6,7 @@ var rimraf = require('rimraf')
 var test = require('tap').test
 
 var model = require('@packard/model')
+var Adaptor = require('@nothingness/level').default
 var Album = model.Album
 var Artist = model.Artist
 var AudioFile = model.AudioFile
@@ -21,7 +22,7 @@ test('setup', function (t) {
 })
 
 test('can round trip a full track via the DAO', function (t) {
-  var dao = new TrackDAO(PLAYGROUND)
+  var dao = new TrackDAO(new Adaptor(PLAYGROUND))
   var lostPath = '/Volumes/S8 food/latest-flac-2/Falling Skies/Land of the Lost  Tremor/01 Land of the Lost.flac'
   var artist = new Artist('Falling Skies')
   var album = new Album(

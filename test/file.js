@@ -11,6 +11,7 @@ var mkdirp = Bluebird.promisify(mkdirpAsync)
 var rimraf = Bluebird.promisify(rimrafAsync)
 
 var model = require('@packard/model')
+var Adaptor = require('@nothingness/level').default
 var File = model.File
 
 var FileDAO = require('../').FileDAO
@@ -25,7 +26,7 @@ var dao
 test('setup', setup)
 
 test('can serialize the output of stat', function (t) {
-  dao = new FileDAO(PLAYGROUND)
+  dao = new FileDAO(new Adaptor(PLAYGROUND))
   var testFilePath = join(WORKING, 'hi')
 
   var statted = writeFile(testFilePath, "how's it going?")
@@ -44,7 +45,7 @@ test('can serialize the output of stat', function (t) {
 test('setup again', setup)
 
 test('can round trip basic file metadata via the DAO', function (t) {
-  dao = new FileDAO(PLAYGROUND)
+  dao = new FileDAO(new Adaptor(PLAYGROUND))
 
   var lostPath = '/Volumes/S8 food/latest-flac-2/Falling Skies/Land of the Lost  Tremor/01 Land of the Lost.flac'
   var stats = {

@@ -11,11 +11,10 @@ import FileDAO from './file.js'
 const GENSYM = Symbol()
 
 export default class TrackDAO extends DAO {
-  constructor (levelPath) {
-    const level = new Adaptor(levelPath)
+  constructor (level) {
     super(level)
 
-    this._fileDAO = new FileDAO(levelPath)
+    this._fileDAO = new FileDAO(level)
     this._get = Bluebird.promisify(level.db.get, { context: level.db })
   }
 
